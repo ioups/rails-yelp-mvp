@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><%= @restaurant.name.capitalize %></h1>
+
+  <p><%= @restaurant.category %> restaurant </p>
+  <p> <%= @restaurant.address %> </p>
+    <ul>
+      <% if @restaurant.reviews.count > 0 %>
+        <li>
+            <% @restaurant.reviews.each do |review| %>
+             <%= review %>
+            <% end %>
+          <% end %>
+        </li>
+    </ul>
+
+  <hr>
+  <%= link_to('back to restaurant list', restaurants_path)%>
+</div>
