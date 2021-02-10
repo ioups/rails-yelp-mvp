@@ -7,8 +7,10 @@
       -
       <%= restaurant.category %> restaurant <br>
       <%= restaurant.address %>
-
     </li>
+    <hr>
     <% end %>
+  <%= link_to 'Add a new restaurant', new_restaurant_path, class: 'btn btn-primary' %>
+
   </ul>
 </div>

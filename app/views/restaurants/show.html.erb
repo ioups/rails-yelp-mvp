@@ -5,14 +5,16 @@
   <p> <%= @restaurant.address %> </p>
     <ul>
       <% if @restaurant.reviews.count > 0 %>
-        <li>
+
             <% @restaurant.reviews.each do |review| %>
-             <%= review %>
+             <li> <%= review.rating %> ⭐️ --
+              <%= review.content %>
+             </li>
             <% end %>
           <% end %>
-        </li>
     </ul>
 
   <hr>
-  <%= link_to('back to restaurant list', restaurants_path)%>
+  <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+  <%= link_to 'back to restaurant list', restaurants_path, class: "btn btn-warning" %>
 </div>
