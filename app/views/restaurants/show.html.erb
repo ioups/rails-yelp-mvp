@@ -3,16 +3,43 @@
 
   <p><%= @restaurant.category %> restaurant </p>
   <p> <%= @restaurant.address %> </p>
-    <ul>
-      <% if @restaurant.reviews.count > 0 %>
 
+  <% if @restaurant.reviews.count > 0 %>
+    <% sum = 0 %>
+    <% @restaurant.reviews.each do |review| %>
+    <% sum += review.rating %>
+    <% end %>
+    <% average = sum / @restaurant.reviews.length %>
+  
+
+    <p> The average rating is 
+    <% average.times do  %>
+      <%= '🧡' %>
+    <% end %> 
+    <% (5 - average).times do  %>
+      <%= '🖤' %>
+     <% end %>
+    </p>
+  <% else %>
+    <p> ***** No comments yet</p>
+  <% end %>
+
+      <% if @restaurant.reviews.count > 0 %>
+        <ul style="list-style: none;">
             <% @restaurant.reviews.each do |review| %>
-             <li> <%= review.rating %> ⭐️ --
-              <%= review.content %>
-             </li>
+             <li> 
+                <% review.rating.times do  %>
+                  <%= '🧡' %>
+                <% end %>
+                <% (5 - review.rating).times do  %>
+                  <%= '🖤' %>
+                <% end %>
+                <%= review.content %>
+              </li>
             <% end %>
-          <% end %>
-    </ul>
+            </ul>
+        <% end %>
+    
 
   <hr>
   <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
