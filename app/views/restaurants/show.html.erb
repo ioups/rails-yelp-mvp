@@ -25,20 +25,20 @@
   <% end %>
 
       <% if @restaurant.reviews.count > 0 %>
-        <ul style="list-style: none;">
-            <% @restaurant.reviews.each do |review| %>
-             <li> 
-                <% review.rating.times do  %>
-                  <%= '🧡' %>
-                <% end %>
-                <% (5 - review.rating).times do  %>
-                  <%= '🖤' %>
-                <% end %>
-                <%= review.content %>
-              </li>
-            <% end %>
-            </ul>
+        <% @restaurant.reviews.each do |review| %>
+          <div class="card-product">
+            <div class="card-product-infos">
+              <% review.rating.times do  %>
+                <%= '🧡' %>
+              <% end %>
+              <% (5 - review.rating).times do  %>
+                <%= '🖤' %>
+              <% end %>
+              <p><%= review.content %></p>
+            </div>
+          </div>
         <% end %>
+      <% end %>
     
 
   <hr>

@@ -1,16 +1,17 @@
 <div class="container">
   <h1>Our restaurants</h1>
 
-  <ul>
+  
     <% @restaurants.each do |restaurant| %>
-    <li> <%= link_to(restaurant.name.capitalize , restaurant_path(restaurant)) %>
-      -
-      <%= restaurant.category %> restaurant <br>
-      <%= restaurant.address %>
-    </li>
-    <hr>
+    <div class="card-product">
+      <img src="https://picsum.photos/200/300" />
+      <div class="card-product-infos">
+          <h2><%= link_to(restaurant.name.capitalize , restaurant_path(restaurant)) %></h2>
+          <p> <strong><%= restaurant.category %></strong> restaurant.</p>
+      </div>
+    </div>
     <% end %>
   <%= link_to 'Add a new restaurant', new_restaurant_path, class: 'btn btn-primary' %>
 
-  </ul>
+
 </div>
